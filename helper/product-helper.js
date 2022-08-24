@@ -18,17 +18,15 @@ module.exports={
     },
     deleteproduct:(deleteid)=>{
         return new Promise((resolve,reject)=>{
-            console.log(deleteid);
             db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({_id:ObjectId(deleteid)}).then(()=>{
                 resolve()
             })
         })
     },
     getProductDetiles:(detilesid)=>{
-     return new Promise((resolve,reject)=>{
-        db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:ObjectId(detilesid)}).then((detiles)=>{
+     return new Promise(async(resolve,reject)=>{
+       var detiles = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:ObjectId(detilesid)})
             resolve(detiles)
-        })
      })
     },
     updateProduct:(updateid,updatedetiles)=>{
@@ -43,6 +41,42 @@ module.exports={
                     }}).then(()=>{
                         resolve(true)
                     })
+        })
+    },
+    addcart:(id)=>{
+      return new Promise((resolve,reject)=>{
+         db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:ObjectId(id)}).then((data)=>{
+           db.get().collection(collection.PRODUCT_CART).insertOne({imgid:data._id,mobile:data.mobile,price:data.price,description:data.description}).then(()=>{
+           })
+           resolve()
+         })
+      })
+    },
+    showcart:()=>{
+        return new Promise(async(resolve,reject)=>{
+            var cart =await db.get().collection(collection.PRODUCT_CART).find().toArray()
+            console.log(cart);
+            resolve(cart)
+        })
+    },
+    deletecart:(cartid)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_CART).deleteOne({_id:ObjectId(cartid)}).then(()=>{
+                resolve()
+            })
+        })
+    },
+    addorder:(data)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_ORDER).insert(data).then(()=>{
+                resolve()
+            })
+        })
+    },
+    showorder:()=>{
+        return new Promise(async(resolve,reject)=>{
+            var order = db.get().collection(collection.PRODUCT_ORDER).find().toArray()
+            resolve(order)
         })
     }
 }

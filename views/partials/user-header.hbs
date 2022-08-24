@@ -12,21 +12,21 @@
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                                    <a class="nav-link active" aria-current="page" href="/home">HOME</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">my orders</a>
+                                    <a class="nav-link" href="/home/orders">my orders</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">cart</a>
+                                    <a class="nav-link" href="/home/cart">cart</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Profile
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">address</a></li>
-                                        <li><a class="dropdown-item" href="#">wellet</a></li>
+                                        <li><a class="dropdown-item" href="/home/account">Account</a></li>
+                                        <li><a class="dropdown-item" href="#">Address</a></li>
                                         <li><a class="dropdown-item" href="#">Others</a></li>
                                     </ul>
                                 </li>
@@ -41,13 +41,13 @@
                 <div class="float-end cart mt-2">
                     {{!-- <a href="#">
                         <span class="number">10</span>
-                        <img class="img-fluid" src="image.png" alt="cart" />
+                        <img class="img-fluid" src="/images/cart.png" alt="cart" />
                         <span>Cart</span>
                     </a> --}}
                 </div>
 
                 <div class="float-end">
-                    <button type="button" class="btn btn-light mt-2 btn-sm "><a style="text-decoration: none; color: black;" href="/logout">Logout</a></button>
+                    <button type="button" class="btn btn-light mt-2 btn-sm "><a style="text-decoration: none;color: black;" href="/logout">Logout</a></button>
                 </div>
             </div>
 

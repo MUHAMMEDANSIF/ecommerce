@@ -1,29 +1,23 @@
-{{>user-header}}
-<section>
-  <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                  {{#each product}}
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top mt-2" src="/product-image/{{this._id}}.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{this.mobile}}</h5>
-                                    <!-- Product price-->
-                                    price:{{this.price}} <br>
-                                    {{this.description}}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
+<body>
+  {{>user-header}}
+  <section>
+    <div class="container-fluid">
+    <div class="row">
+        {{#each product}}
+    <div class="col mt-5">
+     <div class="card" style="width: 18rem;height: 450px;">
+  <img class="card-img-top home-product-image" src="/product-image/{{this._id}}.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h1>{{this.mobile}}</h1>
+    <h4>{{this.price}}</h4>
+    <p class="card-text">{{this.description}}</p>
+    <a href="/home/addtocart/{{this._id}}" class="btn btn-primary">add to cart</a>
+    <a href="/home/bynow/{{this._id}}" class="btn btn-danger">By now</a>
   </div>
-</section>
+</div>
+        </div>
+{{/each}}
+    </div>
+    </div>
+  </section>
+</body>

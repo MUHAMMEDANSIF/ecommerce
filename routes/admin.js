@@ -20,7 +20,6 @@ router.get('/add-product', function(req, res, next) {
 });
 
 router.post('/add-product',function(req,res){
-
 productHelper.addproduct(req.body).then((id)=>{
   let image = req.files.image
   image.mv('./public/product-image/'+id.insertedId+'.jpg',(err,data)=>{
@@ -50,9 +49,9 @@ router.get('/edit-product/:id',async(req,res)=>{
 router.post('/edit-product/:id',(req,res)=>{
      productHelper.updateProduct(req.params.id,req.body).then(()=>{
       res.redirect('back')
-      if(req.files.image){
+      if(image){
         var image = req.files.image
-        var id = req.params.id
+        let id = req.params.id
         image.mv('./public/product-image/'+id+'.jpg')
       }
      })
@@ -87,11 +86,11 @@ router.get('/edit-user/:id',(req,res)=>{
 })
 
  router.get('/delete-user/:id',(req,res)=>{
-   console.log(req.params.id);
    userHelper.deleteUser(req.params.id).then(()=>{
     res.redirect('back')
    })
  })
 
 
-module.exports = router;
+
+module.exports=router;

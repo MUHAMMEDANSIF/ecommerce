@@ -6,7 +6,7 @@ const userHelper = require('../helper/user-helper');
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('signup')
 });
 
